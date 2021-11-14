@@ -1,0 +1,17 @@
+.cul{
+    display: flex;
+    justify-content: space-between;
+}
+
+.half{
+    width: 48%;
+}
+
+.shipping-container{
+    margin-top:300px;
+}
+
+.button-link{
+    font-size: 25px;
+    font-weight: bolder;
+}

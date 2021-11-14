@@ -1,0 +1,45 @@
+<mat-card class="container">
+    <div class="row mb-4">
+        <h1 class="title">Personal Details</h1>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput placeholder="Ex. Avi" placement="top"
+            (input)="onFirstNameChanged($event)" ngbTooltip="Please enter FirstName" id="FirstName">
+        </mat-form-field>
+        <div *ngIf="isErrorFirstName" class="alert alert-danger">{{errorFirstName}}</div>
+        
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input type="text" matInput placeholder="Ex. Frid" placement="top"
+            (input)="onLastNameChanged($event)" ngbTooltip="Please enter LastName" id="LastName">
+        </mat-form-field>
+        <div *ngIf="isErrorLastName" class="alert alert-danger">{{errorLastName}}</div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>City</mat-label>
+            <input type="text" matInput placeholder="Ex. Tel Aviv" placement="top"
+            (input)="onCityChanged($event)" ngbTooltip="Please enter City" id="city">
+        </mat-form-field>
+        <div *ngIf="isErrorCity" class="alert alert-danger">{{errorCity}}</div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Street</mat-label>
+            <input type="text" matInput placeholder="Ex. Ben Gurion" placement="top"
+            (input)="onStreetChanged($event)" ngbTooltip="Please enter Street" id="street">
+        </mat-form-field>
+        <div *ngIf="isErrorStreet" class="alert alert-danger">{{errorStreet}}</div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Zip</mat-label>
+            <input type="text" matInput placeholder="Ex. 12345" placement="top"
+            (input)="onZipChanged($event)" ngbTooltip="Please enter Zip" id="Zip">
+        </mat-form-field>
+        <div *ngIf="isErrorZip" class="alert alert-danger">{{errorZip}}</div>
+
+         
+          <div>
+              <!-- <button class="btn btn-primary" [disabled]="isEmptyField()" (click)="onSubmitClicked()">Submit</button> -->
+              <button (click)="onSubmitClicked()" [disabled]="isEmptyField()" mat-button color="primary"><p class="button-link">Register
+            </p></button>
+          </div>
+    </div>
+</mat-card>

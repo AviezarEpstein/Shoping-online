@@ -1,0 +1,53 @@
+<div class="nav">
+    <div class="toggle-cart">
+        <button *ngIf="this.stateService.isBeforeCheckout" mat-fab color="warn" (click)="toggleShow()">
+            <mat-icon class="s-c-icon">shopping_cart</mat-icon>
+            <mat-icon *ngIf="!this.stateService.isCartShown">subdirectory_arrow_right</mat-icon>
+            <mat-icon *ngIf="this.stateService.isCartShown">subdirectory_arrow_left</mat-icon>
+        </button>
+    </div>
+    
+    <div *ngIf="this.stateService.isLogedIn">
+        <div class="welcome">
+            Welcome {{this.stateService.userName}}
+        </div>
+    </div>
+    <div>
+        <div *ngIf="this.stateService.isLogedIn"><a class="navLink" (click)="onLogoutClicked()">Logout</a></div>
+        <div *ngIf="!this.stateService.isLogedIn"><a class="navLink" (click)="onLoginClicked()">Login</a></div>
+    </div>
+    <div *ngIf="this.stateService.isLogedIn && this.stateService.isAdmin">
+        <a class="navLink" (click)="onAddProductClicked()">Add product</a>
+    </div>
+    <!-- <div>
+        <mat-icon>add_shopping_cart</mat-icon>
+    </div> -->
+    <div>
+        <a class="navLink" (click)="onHomeClicked()">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+        </a>
+    </div>
+    <div>
+        <select class="form-select form-select-lg mb-3" (change)="onCategoryChanged($event)">
+            <option class="dropdown-item" selected>Sort By Category</option>
+            <option class="dropdown-item" *ngFor="let category of this.allCategories" [value]="category.catId">
+                {{category.catName}}</option>
+        </select>
+    </div>
+    <div>
+        <!-- <div class="input-group mb-3">
+            <input type="text" class="form-control" (change)="onSearchInputChanged($event)"
+                placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                (click)="onSearchInputClicked()">Search</button>
+        </div>
+         -->
+        <form class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Search for products</mat-label>
+              <input type="text" matInput placeholder="Search for products"
+              (input)="onSearchInputChanged($event)">
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+          </form>
+    </div>

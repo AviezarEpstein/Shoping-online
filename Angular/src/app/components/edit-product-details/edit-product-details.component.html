@@ -1,0 +1,80 @@
+<mat-card class="container">
+    <div class="row mb-4">
+        <h1 class="title">Edit Product Details</h1>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Product Name</mat-label>
+            <input type="text" value="{{this.stateService.currentEditedProductDetails.productName}}" matInput placeholder="Ex. Chease" placement="top"
+            (input) = "onNameChanged($event)" ngbTooltip="Please enter product name" id="productName">
+        </mat-form-field>
+        <div *ngIf="isErrorName" class="alert alert-danger">{{errorName}}</div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Category ID:</mat-label>
+            <input type="number" value="{{this.stateService.currentEditedProductDetails.catId}}" matInput placeholder="Ex. 5" placement="top"
+            (input) = "onCatIdChanged($event)" min="1" ngbTooltip="Please enter Category ID" id="catId">
+        </mat-form-field>
+        <div *ngIf="isErrorCatId" class="alert alert-danger">{{errorCatId}}</div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Price:</mat-label>
+            <input type="number" value="{{this.stateService.currentEditedProductDetails.price}}" matInput placeholder="Ex. 5" placement="top"
+            (input) = "onPriceChanged($event)" min="1" ngbTooltip="Please enter price" id="price">
+        </mat-form-field>
+        <div *ngIf="isErrorPrice" class="alert alert-danger">{{errorPrice}}</div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>In Stock:</mat-label>
+            <input type="number" value="{{this.stateService.currentEditedProductDetails.inStock}}" matInput placeholder="Ex. 550" placement="top"
+            (input) = "onInStockChanged($event)" min="1" ngbTooltip="Please enter stock quantity" id="inStock">
+        </mat-form-field>
+        <div *ngIf="isErrorInStock" class="alert alert-danger">{{errorInStock}}</div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Image URL:</mat-label>
+            <input type="text" value="{{this.stateService.currentEditedProductDetails.image}}" matInput placeholder="Ex. https://res.cloudinary.com/shufersal/image/upload/f_auto,q_auto/v1551800922/prod/product_images/products_large/IJK56_L_P_7296073426523_1.png" placement="top"
+            (input) = "onImageChanged($event)" ngbTooltip="Please enter Image url" id="image">
+        </mat-form-field>
+        <div *ngIf="isErrorImage" class="alert alert-danger">{{errorImage}}</div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Description</mat-label>
+            <input type="text" value="{{this.stateService.currentEditedProductDetails.description}}" matInput placeholder="Ex. Some description" placement="top"
+            (input) = "onDescriptionChanged($event)" ngbTooltip="Please enter product description" id="description">
+        </mat-form-field>
+        <div *ngIf="isErrorDescription" class="alert alert-danger">{{errorDescription}}</div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Brand</mat-label>
+            <input type="text" value="{{this.stateService.currentEditedProductDetails.brand}}" matInput placeholder="Ex. Tnuva" placement="top"
+            (input) = "onBrandChanged($event)" ngbTooltip="Please enter Brand" id="brand">
+        </mat-form-field>
+        <div *ngIf="isErrorBrand" class="alert alert-danger">{{errorBrand}}</div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Quantity per unit:</mat-label>
+            <input type="number" value="{{this.stateService.currentEditedProductDetails.quantityPerUnit}}" matInput placeholder="Ex. 550" placement="top"
+            (input) = "onQuantityPerUnitChanged($event)" min="1" ngbTooltip="Please enter Quantity per unit" id="inStock">
+        </mat-form-field>
+        <div *ngIf="isErrorQuantityPerUnit" class="alert alert-danger">{{errorQuantityPerUnit}}</div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Weight type:</mat-label>
+            <input type="text" value="{{this.stateService.currentEditedProductDetails.weightType}}" matInput placeholder="Ex. kg" placement="top"
+            (input) = "onWeightTypeChanged($event)" ngbTooltip="Please enter Weight type" id="brand">
+        </mat-form-field>
+        <div *ngIf="isErrorWeightType" class="alert alert-danger">{{errorWeightType}}</div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Weight:</mat-label>
+            <input type="number" value="{{this.stateService.currentEditedProductDetails.weight}}" matInput placeholder="Ex. 3" placement="top"
+            (input) = "onWeightChanged($event)" min="1" ngbTooltip="Please enter stock quantity" id="inStock">
+        </mat-form-field>
+        <div *ngIf="isErrorWeight" class="alert alert-danger">{{errorWeight}}</div>
+
+          <div>
+              <button [disabled]="isEmptyField()" value="Submit" (click) = "onAddProductClicked()" mat-button color="primary"> <p class="button-link">Submit
+            </p></button>
+          </div>
+    </div>
+</mat-card>

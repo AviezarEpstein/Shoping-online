@@ -1,0 +1,79 @@
+<div class="cardContainer">
+    <div class="card">
+        <button class="edit-icon" *ngIf="this.stateService.isAdmin" mat-fab color="primary"  (click)="onEditClicked(currentProduct)"
+                    aria-label="Example icon button with a delete icon">
+                    <mat-icon>edit</mat-icon>
+                </button>
+        <div (click)="onProductClicked(currentProduct)" (click)="open(content)">
+            <h2 class="titel">
+                {{currentProduct.productName}}
+            </h2>
+            <h3 class="price">Price: ${{currentProduct.price}}</h3>
+            <img class="image" src={{currentProduct.image}}>
+            <h4>In Stock: {{currentProduct.inStock}}</h4>
+            <h4 class="moreDetails">
+                Brand: {{currentProduct.brand}}
+            </h4>
+            <h4 class="moreDetails">
+                Weight: {{currentProduct.weight}} {{currentProduct.weightType}}
+            </h4>
+            
+            <div class="login-link" *ngIf = "!stateService.isLogedIn">
+                <h3>Want to buy this product? <br> <span (click)="onLoginClicked()">Click <span class="link">HERE</span> to Login</span></h3>
+            </div>
+        </div>
+
+        <div *ngIf="this.stateService.isLogedIn && !this.stateService.isAdmin">
+            <div *ngIf="this.stateService.productQuantityErrorData.isError && this.stateService.productQuantityErrorData.productId == currentProduct.productId" class="alert alert-danger">{{this.stateService.productQuantityErrorData.errorMessage}}</div>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <input matInput type="number" id={{currentProduct.productId.toString()}} min="1" max="currentProduct.inStock"
+                placeholder="Quantity" (input)="onQuantityChanged($event, currentProduct.inStock, currentProduct.productName, currentProduct.productId)"
+                    placement="top" ngbTooltip="Change quantity" [ngClass]="{'alert alert-danger': this.stateService.productQuantityErrorData.isError && this.stateService.productQuantityErrorData.productId == currentProduct.productId, 'alert alert-primary': !this.stateService.productQuantityErrorData.isError}">
+            </mat-form-field>
+
+            <div class="add-button">
+                <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon"
+                id={{currentProduct.productId.toString()}} [disabled] = "this.stateService.productQuantityErrorData.isError && 
+                this.stateService.productQuantityErrorData.productId == currentProduct.productId || quantityInputValue < 1 || isClicked"
+                (click)="onAddToCartClicked(currentProduct.productId)">
+                  <mat-icon>plus_one</mat-icon>
+                </button>
+              </div>
+
+            <!-- <button id={{currentProduct.productId.toString()}} [disabled] = "this.stateService.productQuantityErrorData.isError && this.stateService.productQuantityErrorData.productId == currentProduct.productId
+            || quantityInputValue < 1" (click)="onAddToCartClicked(currentProduct.productId)">Add to cart</button> -->
+        </div>
+    </div>
+
+
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="cardContainer">
+                <div class="card">
+                    <h2 class="titel">
+                        {{currentProduct.productName}}
+                    </h2>
+                    <h3 class="price">Price: ${{currentProduct.price}}</h3>
+                    <img class="image" src={{currentProduct.image}}>
+                    <h4>{{currentProduct.description}}</h4>
+                    <h4>In Stock: {{currentProduct.inStock}}</h4>
+                    <h4 class="moreDetails">
+                        Brand: {{currentProduct.brand}}
+                    </h4>
+                    <h4 class="moreDetails">
+                        Weight: {{currentProduct.weight}} {{currentProduct.weightType}}
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+        </div>
+    </ng-template>
+</div>

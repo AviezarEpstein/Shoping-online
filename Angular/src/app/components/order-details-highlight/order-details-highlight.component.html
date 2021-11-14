@@ -1,0 +1,9 @@
+<h1> NGX Highlight Text Example</h1>
+<div>
+    <div>
+        <input type="text" [(ngModel)]="query" placeholder="Query..." />
+    </div>
+    <div *ngFor="let product of this.stateService.cart.products">
+        <p [innerHTML]="highlight(product.productName)"></p>
+    </div>
+</div>

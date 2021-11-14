@@ -1,0 +1,56 @@
+.cardContainer{
+    margin: 15px;
+    padding: 15px;
+}
+
+
+
+.edit-icon{
+    margin: 15px;
+}
+
+.login-link{
+    padding: 15px;
+    display: inline-block;
+    text-align: center;
+    margin: 1%;
+    box-shadow: 0 0 7px 4px #00000012;
+    border: none;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+}
+
+.link{
+    color: blue;
+    cursor: pointer;
+}
+
+.card{
+    display: inline-block;
+    text-align: center;
+    margin: 1%;
+    box-shadow: 0 0 7px 4px #00000012;
+    border: none;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+}
+
+.add-button{
+    margin-bottom: 10px;
+}
+
+div.card{
+    width: 400px;
+    margin: 0%;
+}
+
+.card:hover{
+    box-shadow: 0 0 10px 10px #0000002e;
+    transition: all 0.3s ease;
+}
+
+.image {
+    border-radius: 20px 20px 0 0;
+    object-fit: cover;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,9 @@
+<div class="home">
+    <div *ngIf="!this.stateService.isAdmin" class="cart">
+        <app-cart></app-cart>
+    </div>
+    <div class="products">
+        <app-products-container></app-products-container>
+    </div>
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,6 @@
+
+<div class="productsContainer" *ngFor=" let product of this.stateService.products|catIdPipe: this.stateService.currentCatId|subTextPipe: this.stateService.searchedProduct">
+    <div class="product" (click)="showProductDetails(product.productId)">
+        <app-product [currentProduct] = "product"></app-product>
+    </div>
+</div>

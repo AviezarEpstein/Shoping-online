@@ -1,0 +1,38 @@
+.nav{
+    /* position: fixed; */
+    /* z-index: 10; */
+    padding: 20px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.3px solid black;
+    border-bottom: 0.3px solid #002d53;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+
+.welcome{
+    padding: 20px;
+    display: inline-block;
+    font-size: larger;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    border: 1.5 solid black;
+}
+
+.navLink{
+    cursor: pointer;
+    padding: 20px;
+    display: inline-block;
+    font-size: larger;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.navLink:hover{
+    color: #1c74bd;
+  }

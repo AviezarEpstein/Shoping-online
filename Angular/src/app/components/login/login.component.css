@@ -1,0 +1,18 @@
+.container{
+    padding-top: 300px;
+    width: 40%;
+}
+
+.title{
+    text-align: center;
+}
+
+.sign-up-link{
+    color: blue;
+    cursor: pointer;
+}
+
+.button-link{
+    font-size: 25px;
+    font-weight: bolder;
+}

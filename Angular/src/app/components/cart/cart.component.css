@@ -1,0 +1,47 @@
+.cartContainer{
+    position: fixed;
+    z-index: 1;
+    width: 40%;
+    opacity: 0.95;
+    margin-top: 120px;
+}
+
+.as-invoice-layout{
+    height: 90%;
+}
+
+.ui-w-40 {
+    width: 40px !important;
+}
+
+.card{
+    box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
+    background-color:rgb(227,236,237);
+}
+
+.s-c-icon{
+    font-size: 30px;
+    color: rgb(223, 18, 18);
+}
+
+.ui-product-color {
+    display: inline-block;
+    overflow: hidden;
+    margin: .144em;
+    width: .875rem;
+    height: .875rem;
+    border-radius: 10rem;
+    -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+    vertical-align: middle;
+}
+
+.scroll-table-body{
+    height: 430px;
+    overflow: auto;
+}
+
+.login-card{
+    width: 300px;
+    height: 300px;
+}

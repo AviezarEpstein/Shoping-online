@@ -1,0 +1,101 @@
+<div *ngIf="this.stateService.isCartShown || !this.stateService.isBeforeCheckout"
+    class="row col container-fluid cartContainer" [ngClass]="{'cartContainer': this.stateService.isBeforeCheckout, 'as-invoice-layout': !this.stateService.isBeforeCheckout}" id="divshow" #pdfTable>
+    <div class="container ">
+        <!-- Shopping cart table -->
+        <div class="card">
+            <div class="card-header">
+                <h2 *ngIf="this.stateService.isBeforeCheckout">Shopping Cart <mat-icon class="s-c-icon">shopping_cart</mat-icon></h2>
+                <div>
+                    <input type="text" class="form-control" [(ngModel)]="query"
+                        placeholder="Search for products in your cart">
+                </div>
+            </div>
+
+            <div class="card-body" id="htmlData">
+                <div *ngIf = "stateService.isCartEmpty && stateService.isLogedIn">
+                    <h1>Your cart is empty!</h1>
+                </div>
+
+                <div *ngIf = "stateService.isCartEmpty && !stateService.isLogedIn">
+                    <h1>Your cart is empty!</h1>
+                    <h3>In order to see your cart, please login <span (click)="onLoginClicked()">HERE</span></h3>
+                </div>
+                <button *ngIf="this.stateService.isBeforeCheckout" mat-fab color="warn" (click)="onDeleteAllClicked()"
+                    aria-label="Example icon button with a delete icon" [disabled]="this.stateService.isCartEmpty">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <div *ngIf="this.stateService.cartQuantityErrorData.isError" class="alert alert-danger">
+                    {{this.stateService.cartQuantityErrorData.errorMessage}}</div>
+                <div class="scroll-table-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-center py-3 px-4" style="min-width: 200px;">Product Name &amp; Details
+                                </th>
+                                <th class="text-right py-3 px-4" style="width: 100px;">Price</th>
+                                <th class="text-center py-3 px-4" style="width: 120px;">Quantity</th>
+                                <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
+                                <th *ngIf="this.stateService.isBeforeCheckout"
+                                    class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#"
+                                        class="shop-tooltip float-none text-light" title=""
+                                        data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
+                            </tr>
+                        </thead>
+                        <tbody class="sceoll-table-body" *ngFor="let product of this.stateService.cart.products">
+                            <tr>
+                                <td class="p-4">
+                                    <div class="media align-items-center">
+                                        <img src={{product.image}} class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                                        <div class="media-body">
+                                            <p class="d-block text-dark" [innerHTML]="highlight(product.productName)">
+                                            </p>
+                                            <small>
+                                                <span class="text-muted">Whight: </span> {{product.weight}} &nbsp;
+                                            </small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-right font-weight-semibold align-middle p-4">{{product.price}}</td>
+                                <td *ngIf="this.stateService.isBeforeCheckout"
+                                    class="text-right font-weight-semibold align-middle p-4">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <input matInput type="number" min="1"
+                                            (input)="onQuantityChanged(product.productId, $event, product.inStock, product.productName)"
+                                            placement="top" ngbTooltip="Change quantity" value={{product.quantity}}>
+                                    </mat-form-field>
+                                </td>
+                                <td *ngIf="!this.stateService.isBeforeCheckout"
+                                    class="text-right font-weight-semibold align-middle p-4">{{product.quantity}}</td>
+                                <td class="text-right font-weight-semibold align-middle p-4">{{product.totalPrice}}</td>
+                                <td *ngIf="this.stateService.isBeforeCheckout" class="text-center align-middle px-0">
+                                    <button href="#" class="shop-tooltip close float-none text-danger" title=""
+                                        data-original-title="Remove"
+                                        (click)="onDeleteClicked(product.productId, product.totalPrice)">×</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- / Shopping cart table -->
+                <div>
+
+                    <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
+                        <div class="d-flex">
+                            <div class="text-right mt-4">
+                                <label class="text-muted font-weight-normal m-0">Total price</label>
+                                <div class="text-large"><strong>{{this.stateService.cart.totalPrice}}</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="float-right" *ngIf="this.stateService.isBeforeCheckout">
+                        <button type="button" class="btn btn-lg btn-primary mt-2"
+                            [disabled]="this.stateService.cartQuantityErrorData.isError || this.stateService.isCartEmpty"
+                            (click)="onPlaceOrderClicked(this.stateService.cart.totalPrice)">Checkout</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

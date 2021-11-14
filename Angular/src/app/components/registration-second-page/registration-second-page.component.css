@@ -1,0 +1,13 @@
+.container{
+    padding-top: 200px;
+    width: 40%;
+}
+
+.title{
+    text-align: center;
+}
+
+.button-link{
+    font-size: 25px;
+    font-weight: bolder;
+}
