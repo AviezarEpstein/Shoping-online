@@ -1,6 +1,6 @@
 <div class="nav">
     <div class="toggle-cart">
-        <button *ngIf="this.stateService.isBeforeCheckout" mat-fab color="warn" (click)="toggleShow()">
+        <button *ngIf="this.stateService.isBeforeCheckout && this.stateService.isLogedIn && !this.stateService.isAdmin" mat-fab color="warn" (click)="toggleShow()">
             <mat-icon class="s-c-icon">shopping_cart</mat-icon>
             <mat-icon *ngIf="!this.stateService.isCartShown">subdirectory_arrow_right</mat-icon>
             <mat-icon *ngIf="this.stateService.isCartShown">subdirectory_arrow_left</mat-icon>
@@ -28,11 +28,21 @@
         </a>
     </div>
     <div>
-        <select class="form-select form-select-lg mb-3" (change)="onCategoryChanged($event)">
+        <!-- <select class="form-select form-select-lg mb-3" (change)="onCategoryChanged($event)">
             <option class="dropdown-item" selected>Sort By Category</option>
             <option class="dropdown-item" *ngFor="let category of this.allCategories" [value]="category.catId">
                 {{category.catName}}</option>
-        </select>
+        </select> -->
+
+        <mat-form-field appearance="fill">
+            <mat-label>Sort By Category</mat-label>
+            <mat-select (selectionChange)="onCategoryChanged($event)">
+                <mat-option selected>Sort By Category</mat-option>
+              <mat-option *ngFor="let category of this.allCategories" [value]="category.catId">
+                {{category.catName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
     </div>
     <div>
         <!-- <div class="input-group mb-3">
